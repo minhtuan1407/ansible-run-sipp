@@ -1,0 +1,15 @@
+---
+# tasks file for tuantest-run-sipp
+- include: install-sipp.yml
+  tags:
+    - install-sipp
+- include: copy-file-csv.yml
+  tags:
+    - copy-file-csv
+- include: copy-file-xml.yml
+  tags:
+    - copy-file-xml
+- include: run-sipp.yml
+  tags:
+    - run-sipp
+...
