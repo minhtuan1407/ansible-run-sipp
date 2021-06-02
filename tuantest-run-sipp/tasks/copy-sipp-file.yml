@@ -1,0 +1,15 @@
+- name: Copy file 1-100-09999XXXXX.csv
+  template:
+    src: 1-100-09999XXXXX.csv.j2
+    dest: 1-100-09999XXXXX.csv
+  chdir: /tmp/
+- name: Copy file calls-freeswitch.xml
+  template:
+    src: calls-freeswitch.xml.j2
+    dest: calls-freeswitch.xml
+  chdir: /tmp/
+- name: Copy config file wav
+  copy:
+    src: MOH157.wav
+    dest: MOH157.wav
+  chdir: /tmp/

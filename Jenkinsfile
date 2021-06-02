@@ -8,6 +8,8 @@ pipeline {
         string(name: 'pbx_server_ip', defaultValue: '', description: 'Enter IP of PBX server here')
         string(name: 'domain_uri', defaultValue: '', description: 'Enter your tenant name here')
         string(name: 'password_extensions', defaultValue: '', description: 'Enter your password extensions 1 to 100 here')
+        string(name: 'total_calls', defaultValue: '', description: 'Enter your total number of calls here')
+        string(name: 'number_of_calls_per_second', defaultValue: '', description: 'Enter your number of calls per second here')
         string(name: 'calls_duration', defaultValue: '', description: 'Enter your duration calls here')
     }
     stages {

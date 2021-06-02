@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <scenario name="call">
-<send retrans="500">
+  <send retrans="500">
 <![CDATA[
-INVITE sip:[field3]@[field1] SIP/2.0
+INVITE sip:[field3]@[field1]:[remote_port] SIP/2.0
 Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-From: <sip:[field0]@[field1]>;tag=[call_number]
-To: <sip:[field3]@[field1]>
+From: "[field0]" <sip:[field0]@[local_ip]:[local_port]>;tag=[call_number]
+To: <sip:[field3]@[field1]:[remote_port]>
 Call-ID: [call_id]
 CSeq: [cseq] INVITE
 Contact: <sip:[field0]@[local_ip]:[local_port];transport=[transport]>
 Max-Forwards: 100
-Route: <sip:fs04.vht.com.vn:50061;lr>
-User-Agent: SIPp/sippy_cup
+User-Agent: minhtuan1407
 Expires: 0
 Allow: INVITE, ACK, CANCEL, BYE, OPTIONS, REFER, SUBSCRIBE, NOTIFY, MESSAGE
 Content-Type: application/sdp
 Content-Length: [len]
+
 v=0
 o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
 s=-
@@ -27,14 +27,15 @@ a=rtpmap:101 telephone-event/8000
 a=fmtp:101 0-15
 ]]>
 <action><assignstr assign_to="remote_addr" value="[field3]@[field1]:[remote_port]"/><assignstr assign_to="local_addr" value="[field0]@[local_ip]:[local_port]"/><assignstr assign_to="call_addr" value="[field3]@[field1]:[remote_port]"/></action></send>
+<recv response="100" optional="true"/>
 <recv response="407" auth="true" option="false"/>
 
 <send>
 <![CDATA[
 ACK sip:[field3]@[field1]:[remote_port] SIP/2.0
 Via: SIP/2.0/[transport] [local_ip]:[local_port]
-From: <sip:[field0]@[field1]>;tag=[call_number]
-To: sut  <sip:[field3]@[field1]>[peer_tag_param]
+From: [field0] <sip:[field0]@[local_ip]:[local_port]>;tag=[call_number]
+To: <sip:[field3]@[field1]:[remote_port]>[peer_tag_param]
 Call-ID: [call_id]
 CSeq: 1 ACK
 Contact: sip:[field0]@[local_ip]:[local_port]
@@ -45,19 +46,20 @@ Content-Length: 0
 </send>
 <send retrans="500">
 <![CDATA[
-INVITE sip:[field3]@[field1] SIP/2.0
+INVITE sip:[field3]@[field1]:[remote_port] SIP/2.0
 Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-From: <sip:[field0]@[field1]>;tag=[call_number]
-To: <sip:[field3]@[field1]>
+From: "[field0]" <sip:[field0]@[local_ip]:[local_port]>;tag=[call_number]
+To: <sip:[field3]@[field1]:[remote_port]>
 Call-ID: [call_id]
 CSeq: [cseq] INVITE
 Contact: <sip:[field0]@[local_ip]:[local_port];transport=[transport]>
 [field2]
 Max-Forwards: 100
-User-Agent: SIPp/sippy_cup
+User-Agent: minhtuan1407
 Subject: Performance Test
 Content-Type: application/sdp
 Content-Length: [len]
+
 v=0
 o=user1 53655765 2353687637 IN IP[local_ip_type] [local_ip]
 s=-
@@ -70,7 +72,7 @@ a=fmtp:101 0-15
 ]]>
 </send>
 
-  <recv response="100" optional="true"/>
+  <recv response="100" optional="true"/>-->
   <recv response="180" optional="true"/>
   <recv response="183" optional="true"/>
   <recv response="200" rrs="true" rtd="true">
@@ -83,13 +85,13 @@ a=fmtp:101 0-15
 <![CDATA[
 ACK [next_url] SIP/2.0
 Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
-From: <sip:[field0]@[local_ip]:[local_port]>;tag=[call_number]
+From: "sipp" <sip:[field0]@[local_ip]:[local_port]>;tag=[call_number]
 To: <sip:[field3]@[field1]:[remote_port]>[peer_tag_param]
 Call-ID: [call_id]
 CSeq: [cseq] ACK
 Contact: <sip:[$local_addr];transport=[transport]>
 Max-Forwards: 100
-User-Agent: SIPp/sippy_cup
+User-Agent: minhtuan1407
 Content-Length: 0
 [routes]
 ]]>
@@ -100,8 +102,9 @@ Content-Length: 0
     <exec rtp_stream="MOH157.wav,-1,8,PCMA/8000" />
   </action>
 </nop>
-  
-<pause milliseconds="{{ calls_duration }}"/>
+
+<pause milliseconds="{{ calls_duration }}000"/>
+
 
 <send>
 <![CDATA[
@@ -113,11 +116,13 @@ Contact: <sip:[$local_addr];transport=[transport]>
 Call-ID: [call_id]
 CSeq: [cseq] BYE
 Max-Forwards: 100
-User-Agent: SIPp/sippy_cup
+User-Agent: minhtuan1407
 Content-Length: 0
 [routes]
 ]]>
 </send>
   <recv response="200"/>
   <Reference variables="remote_addr,local_addr,call_addr,dummy,remote_tag"/>
+
+
 </scenario>
