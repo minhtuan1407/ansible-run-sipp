@@ -15,7 +15,7 @@ pipeline {
     stages {
         stage ("Install base package Debian 9") {
             steps {
-                sh 'ansible-playbook tuantest-run-sipp.yml -i hosts_all_server -e hostname=${hostname} -e pbx_server_ip=${pbx_server_ip} -e domain_uri=${domain_uri} -e password_extensions=${password_extensions} -e calls_duration=${calls_duration} '
+                sh 'ansible-playbook tuantest-run-sipp.yml -i hosts_all_server -e hostname=${hostname} -e pbx_server_ip=${pbx_server_ip} -e domain_uri=${domain_uri} -e password_extensions=${password_extensions} -e total_calls=${total_calls} -e number_of_calls_per_second=${number_of_calls_per_second} -e calls_duration=${calls_duration}'
             }
         }
     post {
