@@ -1,4 +1,4 @@
 - name: Run SIPP
   shell:
-    cmd: sipp -sf calls-freeswitch.xml -inf 1-100-09999XXXXX.csv -m {{ total_calls }} -r {{ number_of_calls_per_second }} -d {{ calls_duration }}000 {{ pbx_server_ip }}
+    cmd: sipp -sf calls-freeswitch.xml -inf 1-100-09999XXXXX.csv -m {{ total_calls }} -r {{ number_of_calls_per_second }} -l {{ number_of_calls_per_second }} -d {{ calls_duration }}000 {{ pbx_server_ip }}
     chdir: /tmp/
