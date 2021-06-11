@@ -26,7 +26,7 @@ a=rtpmap:0 PCMU/8000
 a=rtpmap:101 telephone-event/8000
 a=fmtp:101 0-15
 ]]>
-<action><assignstr assign_to="remote_addr" value="[field3]@[field1]:[remote_port]"/><assignstr assign_to="local_addr" value="[field0]@[local_ip]:[local_port]"/><assignstr assign_to="call_addr" value="[field3]@[field1]:[remote_port]"/></action></send>
+<action><assignstr assign_to="remote_addr" value="[field3]@[field1]:[remote_port]"/><assignstr assign_to="local_addr" value="[field0]@{{ hostname }}:[local_port]"/><assignstr assign_to="call_addr" value="[field3]@[field1]:[remote_port]"/></action></send>
 <recv response="100" optional="true"/>
 <recv response="407" auth="true" option="false"/>
 
