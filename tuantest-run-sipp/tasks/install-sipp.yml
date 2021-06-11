@@ -22,7 +22,7 @@
     - lksctp-tools
     - cmake
     state: present
-- name: Check that the somefile.conf exists
+- name: Check that is sipp command is exists
   stat:
     path: /usr/local/bin/sipp
   register: sipp_exist
