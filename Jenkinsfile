@@ -72,7 +72,7 @@ pipeline {
         always {
             notifyEvents message: '''Build <a href="$PROJECT_URL">$PROJECT_NAME</a>
             Build Number <a href="$BUILD_URL">$BUILD_NUMBER</a> result with status: <b>$BUILD_STATUS</b>
-            <a href="$BUILD_URL/console">Build log</a>''',
+            <a href="$BUILD_URL/console">Build log</a> on host ${hostname}''',
                 token: 'zqMYpf7aCt0Wl3T_IMdsh-LOUzf7_G8T'
         }
     }
