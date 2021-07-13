@@ -80,7 +80,7 @@ pipeline {
             body: '''Build <a href="$PROJECT_URL">$PROJECT_NAME</a> <br>
             Build Number <a href="$BUILD_URL">$BUILD_NUMBER</a> result with status: <b>$BUILD_STATUS</b> <br>
             <a href="$BUILD_URL/console">Build log</a> on host ${hostname}''',
-            to: 'minhtuan@tel4vn.com'
+            to: 'tech@tel4vn.com'
 
             telegramSend(message: '''Build [$PROJECT_NAME]($PROJECT_URL) \nBuild Number [$BUILD_NUMBER]($BUILD_URL) result with status: *$BUILD_STATUS* \n[Build log]($BUILD_URL/console) on host ${hostname}''',
             chatId:-535274016)
