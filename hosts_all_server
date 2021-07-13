@@ -1,9 +1,12 @@
 [internal-tel4vn]
-113.164.246.12  ansible_user=debian ansible_port=8822 
+113.164.246.12  ansible_user=debian ansible_port=8822
 113.164.246.16  ansible_user=root
 113.164.246.17  ansible_user=debian
 113.164.246.7  ansible_user=centos  ansible_port=8822
-113.164.246.18  ansible_user=debian ansible_port=22
+113.164.246.24  ansible_user=root  ansible_port=8822
+113.164.246.26  ansible_user=root  ansible_port=8822
+113.164.246.28  ansible_user=root  ansible_port=8822
+113.164.246.30  ansible_user=root  ansible_port=8822
 
 [internal-tel4vn:vars]
 
