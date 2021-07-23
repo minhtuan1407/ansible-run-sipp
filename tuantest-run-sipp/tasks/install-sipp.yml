@@ -35,7 +35,7 @@
 - name: Build SIPP
   shell:
     cmd: bash ./build.sh --full
-    chdir: /tmp/
+    chdir: /tmp/sipp/
   when: not sipp_exist.stat.exists
 - name: Copy SIPP to binary
   copy:
