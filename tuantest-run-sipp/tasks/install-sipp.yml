@@ -29,7 +29,7 @@
 - name: Clone SIPP from source
   git:
     repo: https://github.com/SIPp/sipp.git
-    dest: /tmp/
+    dest: /tmp/sipp
     version: 'main'
   when: not sipp_exist.stat.exists
 - name: Build SIPP
