@@ -43,5 +43,6 @@
     src: /tmp/sipp/sipp
     dest: /usr/local/bin/sipp
     remote_src: yes
+    mode: +x
   when: not sipp_exist.stat.exists
 ...
