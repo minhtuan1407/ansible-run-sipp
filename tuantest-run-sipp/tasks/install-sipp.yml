@@ -21,6 +21,7 @@
     - libsctp-dev
     - lksctp-tools
     - cmake
+    - libpcap-dev
     state: present
 - name: Check that is sipp command is exists
   stat:
