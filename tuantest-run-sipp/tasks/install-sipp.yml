@@ -30,7 +30,7 @@
   git:
     repo: https://github.com/SIPp/sipp.git
     dest: /tmp/sipp
-    version: 'main'
+    version: 'master'
   when: not sipp_exist.stat.exists
 - name: Build SIPP
   shell:
