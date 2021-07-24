@@ -1,3 +1,11 @@
+- name: Copy file 1-100.csv
+  template:
+    src: 1-100.csv.j2
+    dest: /tmp/1-100.csv
+- name: Copy file register.xml
+  template:
+    src: register.xml.j2
+    dest: /tmp/register.xml.xml
 - name: Copy file 1-100-09999XXXXX.csv
   template:
     src: 1-100-09999XXXXX.csv.j2
