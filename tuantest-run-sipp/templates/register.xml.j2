@@ -6,13 +6,13 @@
 REGISTER sip:[field1] SIP/2.0
 Via: SIP/2.0/[transport] {{ hostname }}:[local_port];branch=[branch]
 Max-Forwards: 70
-From: "sipp" <sip:[field0]@{{ hostname }}>;tag=[call_number]
-To: "sipp" <sip:[field0]@[field1]>
+From: <sip:[field0]@{{ hostname }}>;tag=[call_number]
+To: <sip:[field0]@[field1]>
 Call-ID: [call_id]
-CSeq: 7 REGISTER
+CSeq: [cseq] REGISTER
 Contact: <sip:[field0]@{{ hostname }}:[local_port];transport=[transport]>
 Expires: 3600
-Content-Length: 0
+Content-Length: [len]
 User-Agent: minhtuan1407
 ]]>
 </send>
@@ -28,13 +28,13 @@ User-Agent: minhtuan1407
 REGISTER sip:[field1] SIP/2.0
 Via: SIP/2.0/[transport] {{ hostname }}:[local_port];branch=[branch]
 Max-Forwards: 70
-From: "sipp" <sip:[field0]@{{ hostname }}>;tag=[call_number]
-To: "sipp" <sip:[field0]@[field1]>
+From: <sip:[field0]@{{ hostname }}>;tag=[call_number]
+To: <sip:[field0]@[field1]>
 Call-ID: [call_id]
-CSeq: 8 REGISTER
+CSeq: [cseq] REGISTER
 Contact: <sip:[field0]@{{ hostname }}:[local_port];transport=[transport]>
 Expires: 3600
-Content-Length: 0
+Content-Length: [len]
 User-Agent: minhtuan1407
 [field2]
 ]]>
