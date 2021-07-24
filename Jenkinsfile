@@ -8,9 +8,9 @@ pipeline {
         string(name: 'pbx_server_ip', defaultValue: '', description: 'Enter IP of PBX server here')
         string(name: 'domain_uri', defaultValue: '', description: 'Enter your tenant name here')
         string(name: 'password_extensions', defaultValue: '', description: 'Enter your password extensions 1 to 100 here')
-        string(name: 'total_calls', defaultValue: '', description: 'Enter your total number of calls here')
-        string(name: 'number_of_calls_per_second', defaultValue: '', description: 'Enter your number of calls per second here')
-        string(name: 'calls_duration', defaultValue: '', description: 'Enter your duration calls here')
+        string(name: 'total_request', defaultValue: '', description: 'Enter your total number of request here')
+        string(name: 'number_of_request_per_second', defaultValue: '', description: 'Enter your number of request per second here')
+        string(name: 'request_duration', defaultValue: '', description: 'Enter your duration request here')
     }
     stages {
         stage ("Install SIPP") {
@@ -24,9 +24,9 @@ pipeline {
                         pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
                         domain_uri: [value: '${domain_uri}', hidden: false],
                         password_extensions: [value: '${password_extensions}', hidden: true],
-                        total_calls: [value: '${total_calls}', hidden: false],
-                        number_of_calls_per_second: [value: '${number_of_calls_per_second}', hidden: false],
-                        calls_duration: [value: '${calls_duration}', hidden: false]
+                        total_request: [value: '${total_request}', hidden: false],
+                        number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
+                        request_duration: [value: '${request_duration}', hidden: false]
                     ]
                 )
             }
@@ -42,9 +42,9 @@ pipeline {
                         pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
                         domain_uri: [value: '${domain_uri}', hidden: false],
                         password_extensions: [value: '${password_extensions}', hidden: true],
-                        total_calls: [value: '${total_calls}', hidden: false],
-                        number_of_calls_per_second: [value: '${number_of_calls_per_second}', hidden: false],
-                        calls_duration: [value: '${calls_duration}', hidden: false]
+                        total_request: [value: '${total_request}', hidden: false],
+                        number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
+                        request_duration: [value: '${request_duration}', hidden: false]
                     ]
                 )
             }
@@ -60,9 +60,9 @@ pipeline {
                         pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
                         domain_uri: [value: '${domain_uri}', hidden: false],
                         password_extensions: [value: '${password_extensions}', hidden: true],
-                        total_calls: [value: '${total_calls}', hidden: false],
-                        number_of_calls_per_second: [value: '${number_of_calls_per_second}', hidden: false],
-                        calls_duration: [value: '${calls_duration}', hidden: false]
+                        total_request: [value: '${total_request}', hidden: false],
+                        number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
+                        request_duration: [value: '${request_duration}', hidden: false]
                     ]
                 )
             }
