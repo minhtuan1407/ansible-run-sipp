@@ -5,7 +5,7 @@
 - name: Copy file register.xml
   template:
     src: register.xml.j2
-    dest: /tmp/register.xml.xml
+    dest: /tmp/register.xml
 - name: Copy file 1-100-09999XXXXX.csv
   template:
     src: 1-100-09999XXXXX.csv.j2
