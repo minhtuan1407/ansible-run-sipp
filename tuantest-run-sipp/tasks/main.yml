@@ -6,7 +6,10 @@
 - include: copy-sipp-file.yml
   tags:
     - copy-sipp-file
-- include: run-sipp.yml
+- include: run-sipp-register.yml
   tags:
-    - run-sipp
+    - run-sipp-register
+- include: run-sipp-invite.yml
+  tags:
+    - run-sipp-invite
 ...
