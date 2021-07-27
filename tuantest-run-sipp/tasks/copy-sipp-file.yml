@@ -1,7 +1,7 @@
 - name: Copy file "{{ extensions_start }}-{{ extensions_end }}.csv"
   template:
     src: "{{ extensions_start }}-{{ extensions_end }}.csv.j2"
-    dest: /tmp/"{{ extensions_start }}-{{ extensions_end }}.csv"
+    dest: /tmp/{{ extensions_start }}-{{ extensions_end }}.csv
 - name: Copy file register.xml
   template:
     src: register.xml.j2
@@ -9,7 +9,7 @@
 - name: Copy file "{{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv"
   template:
     src: "{{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv.j2"
-    dest: /tmp/"{{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv"
+    dest: /tmp/{{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv
 - name: Copy file calls-freeswitch.xml
   template:
     src: calls-freeswitch.xml.j2
