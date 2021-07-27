@@ -4,16 +4,16 @@ pipeline {
         ansiColor('vga')
     }
     parameters {
-        string(name: 'hostname', defaultValue: '', description: 'Enter your IP server here')
-        string(name: 'pbx_server_ip', defaultValue: '', description: 'Enter IP of PBX server here')
-        string(name: 'extensions_start', defaultValue: '', description: 'Enter your starting extensions here')
-        string(name: 'extensions_end', defaultValue: '', description: 'Enter your ending extensions here')
-        string(name: 'domain_uri', defaultValue: '', description: 'Enter your tenant name here')
-        string(name: 'password_extensions', defaultValue: '', description: 'Enter your password extensions 1 to 100 here')
-        string(name: 'total_request', defaultValue: '', description: 'Enter your total number of request here')
-        string(name: 'number_of_request_per_second', defaultValue: '', description: 'Enter your number of request per second here')
-        string(name: 'request_duration', defaultValue: '', description: 'Enter your duration request here')
-        choice(name: 'run_type', choices: ['register+invite', 'register', 'invite'], description: 'Choose how to run SIPP')
+        string(name: 'hostname', defaultValue: '', description: '')
+        string(name: 'pbx_server_ip', defaultValue: '', description: '')
+        string(name: 'extensions_start', defaultValue: '', description: '')
+        string(name: 'extensions_end', defaultValue: '', description: '')
+        string(name: 'domain_uri', defaultValue: '', description: '')
+        string(name: 'password_extensions', defaultValue: '', description: '')
+        string(name: 'total_request', defaultValue: '', description: '')
+        string(name: 'number_of_request_per_second', defaultValue: '', description: '')
+        string(name: 'request_duration', defaultValue: '', description: '')
+        choice(name: 'run_type', choices: ['register+invite', 'register', 'invite'], description: '')
     }
     stages {
         stage ("Install SIPP") {
