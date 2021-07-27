@@ -6,8 +6,8 @@ pipeline {
     parameters {
         string(name: 'hostname', defaultValue: '', description: 'Enter your IP server here')
         string(name: 'pbx_server_ip', defaultValue: '', description: 'Enter IP of PBX server here')
-        string(name: 'extensions_start'), defaultValue: '', description: 'Enter your starting extensions here')
-        string(name: 'extensions_end'), defaultValue: '', description: 'Enter your ending extensions here')
+        string(name: 'extensions_start', defaultValue: '', description: 'Enter your starting extensions here')
+        string(name: 'extensions_end', defaultValue: '', description: 'Enter your ending extensions here')
         string(name: 'domain_uri', defaultValue: '', description: 'Enter your tenant name here')
         string(name: 'password_extensions', defaultValue: '', description: 'Enter your password extensions 1 to 100 here')
         string(name: 'total_request', defaultValue: '', description: 'Enter your total number of request here')
