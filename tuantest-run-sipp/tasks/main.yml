@@ -9,7 +9,9 @@
 - include: run-sipp-register.yml
   tags:
     - run-sipp-register
+  when: run_type == "register+invite" or run_type == "register"
 - include: run-sipp-invite.yml
   tags:
     - run-sipp-invite
+  when: run_type == "register+invite" or run_type == "invite"
 ...
