@@ -78,7 +78,7 @@ pipeline {
                             }
                         }
                         stage ("Run SIPP Invite") {
-                            step {
+                            steps {
                                 ansiblePlaybook (
                                     playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
                                     inventory: '${WORKSPACE}/hosts_all_server',
