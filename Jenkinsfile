@@ -78,20 +78,22 @@ pipeline {
                             }
                         }
                         stage ("Run SIPP Invite") {
-                            ansiblePlaybook (
-                                playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
-                                inventory: '${WORKSPACE}/hosts_all_server',
-                                tags: 'run-sipp-invite',
-                                extraVars: [
-                                    hostname: [value: '${hostname}', hidden: false],
-                                    pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
-                                    domain_uri: [value: '${domain_uri}', hidden: false],
-                                    password_extensions: [value: '${password_extensions}', hidden: true],
-                                    total_request: [value: '${total_request}', hidden: false],
-                                    number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                                    request_duration: [value: '${request_duration}', hidden: false]
-                                ]
-                            )
+                            step {
+                                ansiblePlaybook (
+                                    playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
+                                    inventory: '${WORKSPACE}/hosts_all_server',
+                                    tags: 'run-sipp-invite',
+                                    extraVars: [
+                                        hostname: [value: '${hostname}', hidden: false],
+                                        pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
+                                        domain_uri: [value: '${domain_uri}', hidden: false],
+                                        password_extensions: [value: '${password_extensions}', hidden: true],
+                                        total_request: [value: '${total_request}', hidden: false],
+                                        number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
+                                        request_duration: [value: '${request_duration}', hidden: false]
+                                    ]
+                                )
+                            }
                         }
                     }
                 }
