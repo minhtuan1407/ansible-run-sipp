@@ -99,51 +99,51 @@ pipeline {
                     }
                 }
             }
-            stage ("Run SIPP Regsiter") {
-                when {
-                    expression {
-                        params.run_type == 'register'
-                    }
-                }
-                steps {
-                    ansiblePlaybook (
-                        playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
-                        inventory: '${WORKSPACE}/hosts_all_server',
-                        tags: 'run-sipp-register',
-                        extraVars: [
-                            hostname: [value: '${hostname}', hidden: false],
-                            pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
-                            domain_uri: [value: '${domain_uri}', hidden: false],
-                            password_extensions: [value: '${password_extensions}', hidden: true],
-                            total_request: [value: '${total_request}', hidden: false],
-                            number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                            request_duration: [value: '${request_duration}', hidden: false]
-                        ]
-                    )
+        }
+        stage ("Run SIPP Regsiter") {
+            when {
+                expression {
+                    params.run_type == 'register'
                 }
             }
-            stage ("Run SIPP Invite") {
-                when {
-                    expression {
-                        params.run_type == 'invite'
-                    }
+            steps {
+                ansiblePlaybook (
+                    playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
+                    inventory: '${WORKSPACE}/hosts_all_server',
+                    tags: 'run-sipp-register',
+                    extraVars: [
+                        hostname: [value: '${hostname}', hidden: false],
+                        pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
+                        domain_uri: [value: '${domain_uri}', hidden: false],
+                        password_extensions: [value: '${password_extensions}', hidden: true],
+                        total_request: [value: '${total_request}', hidden: false],
+                        number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
+                        request_duration: [value: '${request_duration}', hidden: false]
+                    ]
+                )
+            }
+        }
+        stage ("Run SIPP Invite") {
+            when {
+                expression {
+                    params.run_type == 'invite'
                 }
-                steps {
-                    ansiblePlaybook (
-                        playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
-                        inventory: '${WORKSPACE}/hosts_all_server',
-                        tags: 'run-sipp-invite',
-                        extraVars: [
-                            hostname: [value: '${hostname}', hidden: false],
-                            pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
-                            domain_uri: [value: '${domain_uri}', hidden: false],
-                            password_extensions: [value: '${password_extensions}', hidden: true],
-                            total_request: [value: '${total_request}', hidden: false],
-                            number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                            request_duration: [value: '${request_duration}', hidden: false]
-                        ]
-                    )
-                }
+            }
+            steps {
+                ansiblePlaybook (
+                    playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
+                    inventory: '${WORKSPACE}/hosts_all_server',
+                    tags: 'run-sipp-invite',
+                    extraVars: [
+                        hostname: [value: '${hostname}', hidden: false],
+                        pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
+                        domain_uri: [value: '${domain_uri}', hidden: false],
+                        password_extensions: [value: '${password_extensions}', hidden: true],
+                        total_request: [value: '${total_request}', hidden: false],
+                        number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
+                        request_duration: [value: '${request_duration}', hidden: false]
+                    ]
+                )
             }
         }
     }
