@@ -1,6 +1,6 @@
 - name: Run SIPP invite
   shell:
-    # cmd: sipp -sf calls-freeswitch.xml -inf 1-100-09999XXXXX.csv -m {{ total_request }} -r {{ number_of_request_per_second }} -l {{ number_of_request_per_second }}*{{ request_duration }} -d {{ request_duration }}000 {{ pbx_server_ip }}
-    cmd: sipp -sf calls-freeswitch.xml -inf 1-100-09999XXXXX.csv -m {{ total_request }} -r {{ number_of_request_per_second }} -d {{ request_duration }}000 -l {{ number_of_request_per_second * request_duration | int }} {{ pbx_server_ip }}
+    # cmd: sipp -sf calls-freeswitch.xml -inf 1-100-09999XXXXX.csv -m {{ total_request }} -r {{ number_of_request_per_second }} -d {{ request_duration }}000 -l {{ number_of_request_per_second * request_duration | int }} {{ pbx_server_ip }}
+    cmd: sipp -sf calls-freeswitch.xml -inf {{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv -m {{ total_request }} -r {{ number_of_request_per_second }} -d {{ request_duration }}000 {{ pbx_server_ip }}
     chdir: /tmp/
   ignore_errors: yes

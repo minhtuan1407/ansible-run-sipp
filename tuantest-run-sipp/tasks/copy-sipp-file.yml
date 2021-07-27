@@ -1,15 +1,15 @@
-- name: Copy file 1-100.csv
+- name: Copy file {{ extensions_start }}-{{ extensions_end }}.csv
   template:
-    src: 1-100.csv.j2
-    dest: /tmp/1-100.csv
+    src: {{ extensions_start }}-{{ extensions_end }}.csv.j2
+    dest: /tmp/{{ extensions_start }}-{{ extensions_end }}.csv
 - name: Copy file register.xml
   template:
     src: register.xml.j2
     dest: /tmp/register.xml
-- name: Copy file 1-100-09999XXXXX.csv
+- name: Copy file {{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv
   template:
-    src: 1-100-09999XXXXX.csv.j2
-    dest: /tmp/1-100-09999XXXXX.csv
+    src: {{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv.j2
+    dest: /tmp/{{ extensions_start }}-{{ extensions_end }}-0XXXXXXXXX.csv
 - name: Copy file calls-freeswitch.xml
   template:
     src: calls-freeswitch.xml.j2

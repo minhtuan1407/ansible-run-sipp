@@ -6,6 +6,8 @@ pipeline {
     parameters {
         string(name: 'hostname', defaultValue: '', description: 'Enter your IP server here')
         string(name: 'pbx_server_ip', defaultValue: '', description: 'Enter IP of PBX server here')
+        string(name: 'extensions_start'), defaultValue: '', description: 'Enter your starting extensions here')
+        string(name: 'extensions_end'), defaultValue: '', description: 'Enter your ending extensions here')
         string(name: 'domain_uri', defaultValue: '', description: 'Enter your tenant name here')
         string(name: 'password_extensions', defaultValue: '', description: 'Enter your password extensions 1 to 100 here')
         string(name: 'total_request', defaultValue: '', description: 'Enter your total number of request here')
@@ -34,6 +36,7 @@ pipeline {
         }
         stage ("Copy SIPP file") {
             steps {
+                sh 'bash create-csv.sh ${extensions_start} ${extensions_end}'
                 ansiblePlaybook (
                     playbook: '${WORKSPACE}/tuantest-run-sipp.yml',
                     inventory: '${WORKSPACE}/hosts_all_server',
@@ -41,6 +44,8 @@ pipeline {
                     extraVars: [
                         hostname: [value: '${hostname}', hidden: false],
                         pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
+                        extensions_start: [value: '${extensions_start}', hidden: false],
+                        extensions_end: [value: '${extensions_end}', hidden: false],
                         domain_uri: [value: '${domain_uri}', hidden: false],
                         password_extensions: [value: '${password_extensions}', hidden: true],
                         total_request: [value: '${total_request}', hidden: false],
@@ -66,11 +71,12 @@ pipeline {
                             extraVars: [
                                 hostname: [value: '${hostname}', hidden: false],
                                 pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
+                                extensions_start: [value: '${extensions_start}', hidden: false],
+                                extensions_end: [value: '${extensions_end}', hidden: false],
                                 domain_uri: [value: '${domain_uri}', hidden: false],
                                 password_extensions: [value: '${password_extensions}', hidden: true],
                                 total_request: [value: '${total_request}', hidden: false],
                                 number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                                request_duration: [value: '${request_duration}', hidden: false],
                                 run_type: [value: '${run_type}', hidden: false]
                             ]
                         )
@@ -90,6 +96,8 @@ pipeline {
                             extraVars: [
                                 hostname: [value: '${hostname}', hidden: false],
                                 pbx_server_ip: [value: '${pbx_server_ip}', hidden: false],
+                                extensions_start: [value: '${extensions_start}', hidden: false],
+                                extensions_end: [value: '${extensions_end}', hidden: false],
                                 domain_uri: [value: '${domain_uri}', hidden: false],
                                 password_extensions: [value: '${password_extensions}', hidden: true],
                                 total_request: [value: '${total_request}', hidden: false],
