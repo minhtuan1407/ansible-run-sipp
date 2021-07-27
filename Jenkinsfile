@@ -70,7 +70,8 @@ pipeline {
                                 password_extensions: [value: '${password_extensions}', hidden: true],
                                 total_request: [value: '${total_request}', hidden: false],
                                 number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                                request_duration: [value: '${request_duration}', hidden: false]
+                                request_duration: [value: '${request_duration}', hidden: false],
+                                run_type: [value: '${run_type}', hidden: false]
                             ]
                         )
                     }
@@ -93,7 +94,8 @@ pipeline {
                                 password_extensions: [value: '${password_extensions}', hidden: true],
                                 total_request: [value: '${total_request}', hidden: false],
                                 number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                                request_duration: [value: '${request_duration}', hidden: false]
+                                request_duration: [value: '${request_duration}', hidden: false],
+                                run_type: [value: '${run_type}', hidden: false]
                             ]
                         )
                     }
@@ -118,7 +120,8 @@ pipeline {
                         password_extensions: [value: '${password_extensions}', hidden: true],
                         total_request: [value: '${total_request}', hidden: false],
                         number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                        request_duration: [value: '${request_duration}', hidden: false]
+                        request_duration: [value: '${request_duration}', hidden: false],
+                        run_type: [value: '${run_type}', hidden: false]
                     ]
                 )
             }
@@ -141,7 +144,8 @@ pipeline {
                         password_extensions: [value: '${password_extensions}', hidden: true],
                         total_request: [value: '${total_request}', hidden: false],
                         number_of_request_per_second: [value: '${number_of_request_per_second}', hidden: false],
-                        request_duration: [value: '${request_duration}', hidden: false]
+                        request_duration: [value: '${request_duration}', hidden: false],
+                        run_type: [value: '${run_type}', hidden: false]
                     ]
                 )
             }
