@@ -27,7 +27,7 @@ fi
 if [ "${#extensions_start}" = 3 ] && [ "${#extensions_end}" = 3 ]; then
         for (( i=$extensions_start; i<=$extensions_end; i++ ))
         do
-                echo -e "$i;{{ domain_uri }};[authentication username=$i password={{ password_extensions }}];0965138057;" >> tuantest-run-sipp/templates/$extensions_start-$extensions_end-0XXXXXXXXX.csv.j2
+                echo -e "$i;{{ domain_uri }};[authentication username=$i password={{ password_extensions }}];0999999$i;" >> tuantest-run-sipp/templates/$extensions_start-$extensions_end-0XXXXXXXXX.csv.j2
         done
 fi
 
