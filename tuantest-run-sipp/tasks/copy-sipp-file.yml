@@ -16,5 +16,5 @@
     dest: /tmp/calls-freeswitch.xml
 - name: Copy config file wav
   copy:
-    src: MOH157.wav
-    dest: /tmp/MOH157.wav
+    src: Lost-Star-alaw.wav
+    dest: /tmp/Lost-Star-alaw.wav

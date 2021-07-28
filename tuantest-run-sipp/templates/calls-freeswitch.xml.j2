@@ -10,7 +10,7 @@ Call-ID: [call_id]
 CSeq: [cseq] INVITE
 Contact: <sip:[field0]@{{ hostname }}:[local_port];transport=[transport]>
 Max-Forwards: 100
-User-Agent: TEL4VN
+User-Agent: minhtuan1407
 Expires: 0
 Allow: INVITE, ACK, CANCEL, BYE, OPTIONS, REFER, SUBSCRIBE, NOTIFY, MESSAGE
 Content-Type: application/sdp
@@ -62,7 +62,7 @@ CSeq: [cseq] INVITE
 Contact: <sip:[field0]@{{ hostname }}:[local_port];transport=[transport]>
 [field2]
 Max-Forwards: 100
-User-Agent: TEL4VN
+User-Agent: minhtuan1407
 Subject: Performance Test
 Content-Type: application/sdp
 Content-Length: [len]
@@ -105,7 +105,7 @@ Call-ID: [call_id]
 CSeq: [cseq] ACK
 Contact: <sip:[$local_addr];transport=[transport]>
 Max-Forwards: 100
-User-Agent: TEL4VN
+User-Agent: minhtuan1407
 Content-Length: 0
 [routes]
 ]]>
@@ -113,7 +113,7 @@ Content-Length: 0
 
 <nop>
   <action>
-    <exec rtp_stream="MOH157.wav,-1,8,PCMA/8000" />
+    <exec rtp_stream="Lost-Star-alaw.wav,-1,8,PCMA/8000" />
   </action>
 </nop>
 
@@ -130,7 +130,7 @@ Contact: <sip:[$local_addr];transport=[transport]>
 Call-ID: [call_id]
 CSeq: [cseq] BYE
 Max-Forwards: 100
-User-Agent: TEL4VN
+User-Agent: minhtuan1407
 Content-Length: 0
 [routes]
 ]]>
