@@ -11,6 +11,9 @@
 
 [internal-tel4vn:vars]
 
+[mtuan-local]
+27.74.116.218 ansible_user=root ansible_port=8822
+
 [cloud-vht]
 103.149.170.78
 103.149.170.99
