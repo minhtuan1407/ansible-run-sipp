@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<scenario name="UAC INVITE with Auth and SDP">
+  <send retrans="500" start_txn="invite">
+    <![CDATA[
+      INVITE sip:[field3]@[field1]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch]
+      From: <sip:[field0]@[field1]:[local_port]>;tag=[pid]TEL4VN[call_number]
+      To: <sip:[field3]@[field1]:[remote_port]>
+      Call-ID: [call_id]
+      CSeq: [cseq] INVITE
+      Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+      Max-Forwards: 70
+      Subject: TEL4VN
+      User-Agent: minhtuan1407
+      Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=- 3836498267 3836498267 IN IP[local_ip_type] {{ ip_server }}
+      s=-
+      t=0 0
+      m=audio [media_port] RTP/AVP 8 0 101
+      c=IN IP[media_ip_type] {{ ip_server }}
+      a=rtpmap:8 PCMA/8000
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-16
+
+    ]]>
+  </send>
+
+  <recv response="100" optional="true" rrs="true" response_txn="invite">
+  </recv>
+
+  <recv response="180" optional="true" rrs="true" response_txn="invite">
+  </recv>
+
+  <recv response="183" optional="true" rrs="true" response_txn="invite">
+  </recv>
+
+  <recv response="407" auth="true" rrs="true" response_txn="invite">
+  </recv>
+
+  <send ack_txn="invite">
+    <![CDATA[
+
+      ACK sip:[field3]@[field1] SIP/2.0
+      Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch-5]
+      From: [field0] <sip:[field0]@[field1]:[local_port]>;tag=[pid]TEL4VN[call_number]
+      [last_To]
+      [routes]
+      Call-ID: [call_id]
+      CSeq: [cseq] ACK
+      Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+      Max-Forwards: 70
+      Subject: TEL4VN
+      User-Agent: minhtuan1407
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <send retrans="500" start_txn="invite2">
+    <![CDATA[
+
+      INVITE sip:[field3]@[field1]:[remote_port] SIP/2.0
+      Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch]
+      Max-Forwards: 70
+      From: <sip:[field0]@[field1]:[local_port]>;tag=[pid]TEL4VN[call_number]
+      To: <sip:[field3]@[field1]:[remote_port]>
+      [routes]
+      Call-ID: [call_id]
+      CSeq: [cseq] INVITE
+      Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+      Max-Forwards: 70
+      Subject: TEL4VN
+      User-Agent: minhtuan1407
+      Allow: PRACK, INVITE, ACK, BYE, CANCEL, UPDATE, INFO, SUBSCRIBE, NOTIFY, REFER, MESSAGE, OPTIONS
+      [field2]
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+      v=0
+      o=- 3836498267 3836498267 IN IP[local_ip_type] {{ ip_server }}
+      s=-
+      t=0 0
+      m=audio [media_port] RTP/AVP 8 0 101
+      c=IN IP[media_ip_type] {{ ip_server }}
+      a=rtpmap:8 PCMA/8000
+      a=rtpmap:101 telephone-event/8000
+      a=fmtp:101 0-16
+
+    ]]>
+  </send>
+
+  <recv response="100" optional="true" response_txn="invite2">
+  </recv>
+
+  <recv response="180" optional="true" response_txn="invite2">
+  </recv>
+  
+  <recv response="183" optional="true" response_txn="invite2">
+  </recv>
+
+  <recv response="200" rtd="true" rrs="true" response_txn="invite2">
+	  <action>
+		  <ereg regexp= "sip:[^+>]+"  search_in="hdr" header="Contact:" assign_to="1" />
+	  </action>
+  </recv>
+
+  <send ack_txn="invite2">
+    <![CDATA[
+
+      ACK [$1] SIP/2.0
+      Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch-5]
+      From: <sip:[field0]@[field1]>;tag=[pid]TEL4VN[call_number]
+      [last_To]
+      [routes]
+      Call-ID: [call_id]
+      CSeq: [cseq] ACK
+      Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+      Max-Forwards: 70
+      Subject: TEL4VN
+      User-Agent: minhtuan1407
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+<nop>
+  <action>
+    <exec rtp_stream="Lost-Star-alaw.wav,-1,8,PCMA/8000"/>
+  </action>
+</nop>
+
+<pause milliseconds="{{ request_duration }}000"/>
+
+  <send retrans="500">
+    <![CDATA[
+
+      BYE [$1] SIP/2.0
+      Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch]
+      From: <sip:[field0]@[field1]>;tag=[pid]TEL4VN[call_number]
+      [last_To]
+      [routes]
+      Call-ID: [call_id]
+      CSeq: [cseq] BYE
+      Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+      Max-Forwards: 70
+      Subject: TEL4VN
+      User-Agent: minhtuan1407
+      Content-Length: 0
+
+    ]]>
+  </send>
+
+  <recv response="200" crlf="true">
+  </recv>
+
+  <ResponseTimeRepartition value="10, 20, 30, 40, 50, 100, 150, 200"/>
+
+  <CallLengthRepartition value="10, 50, 100, 500, 1000, 5000, 10000"/>
+
+</scenario>

@@ -1,0 +1,6 @@
+- name: Run SIPP register
+  shell:
+    # cmd: sipp -sf calls-freeswitch.xml -inf 1-100-09999XXXXX.csv -m {{ total_request }} -r {{ number_of_request_per_second }} -l {{ number_of_request_per_second }}*{{ request_duration }} -d {{ request_duration }}000 {{ pbx_server_ip }}
+    cmd: sipp -sf register.xml -inf {{ extensions_start }}-{{ extensions_end }}.csv -m {{ total_request }} -r {{ number_of_request_per_second }} -default_behaviors abortunexp {{ pbx_server_ip }}
+    chdir: /tmp/
+  ignore_errors: yes

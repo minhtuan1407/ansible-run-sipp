@@ -1,0 +1,48 @@
+---
+- name: Update apt packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+- name: Install base packages utilities
+  apt:
+    name:
+    - sudo
+    - vim
+    - git
+    - wget
+    - curl
+    - htop
+    - dh-autoreconf
+    - pkg-config
+    - ncurses-dev
+    - build-essential
+    - libssl-dev
+    - libncurses5-dev
+    - libsctp-dev
+    - lksctp-tools
+    - cmake
+    - libpcap-dev
+    state: present
+- name: Check that is sipp command is exists
+  stat:
+    path: /usr/local/bin/sipp
+  register: sipp_exist
+- name: Clone SIPP from source
+  git:
+    repo: https://github.com/SIPp/sipp.git
+    dest: /tmp/sipp
+    version: 'master'
+  when: not sipp_exist.stat.exists
+- name: Build SIPP
+  shell:
+    cmd: bash ./build.sh --full
+    chdir: /tmp/sipp/
+  when: not sipp_exist.stat.exists
+- name: Copy SIPP to binary
+  copy:
+    src: /tmp/sipp/sipp
+    dest: /usr/local/bin/sipp
+    remote_src: yes
+    mode: +x
+  when: not sipp_exist.stat.exists
+...

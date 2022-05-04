@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<scenario name="registration">
+
+<send retrans="500">
+<![CDATA[
+REGISTER sip:[field1] SIP/2.0
+Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch]
+[routes]
+Max-Forwards: 70
+From: <sip:[field0]@[field1]>;tag=[pid]SIPpTag01[call_number]
+To: <sip:[field0]@[field1]>
+Call-ID: [call_id]
+CSeq: [cseq] REGISTER
+User-Agent: minhtuan1407
+Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+Expires: 3600
+Content-Length:  0
+
+]]>
+</send>
+
+<recv response="100" optional="true">
+</recv>
+
+<recv response="401" auth="true" rtd="true">
+</recv>
+
+<send retrans="500">
+<![CDATA[
+REGISTER sip:[field1] SIP/2.0
+Via: SIP/2.0/[transport] {{ ip_server }}:[local_port];branch=[branch]
+[routes]
+Max-Forwards: 70
+From: <sip:[field0]@[field1]>;tag=[pid]SIPpTag01[call_number]
+To: <sip:[field0]@[field1]>
+Call-ID: [call_id]
+CSeq: [cseq] REGISTER
+User-Agent: minhtuan1407
+Contact: <sip:[field0]@{{ ip_server }}:[local_port];transport=[transport]>
+Expires: 3600
+[field2]
+Content-Length:  0
+]]>
+</send>
+
+<recv response="200">
+</recv>
+
+</scenario>

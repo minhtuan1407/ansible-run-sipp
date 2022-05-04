@@ -1,0 +1,17 @@
+---
+# tasks file for ansible-run-sipp
+- import_tasks: install-sipp.yml
+  tags:
+    - install-sipp
+- import_tasks: copy-sipp-file.yml
+  tags:
+    - copy-sipp-file
+- import_tasks: run-sipp-register.yml
+  tags:
+    - run-sipp-register
+  when: run_type == "register+invite" or run_type == "register"
+- import_tasks: run-sipp-invite.yml
+  tags:
+    - run-sipp-invite
+  when: run_type == "register+invite" or run_type == "invite"
+...
